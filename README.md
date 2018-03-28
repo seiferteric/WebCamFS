@@ -12,7 +12,20 @@ Notes:
 - Currently saves image as a .bmp because it is a constant size given a constant resolution, whereas jpg for example will change. This causes an issue when opening the file, because it takes the image when you open, so the size changes from underneath it and it will either not read the whole file, or past the end.
 - Uses a fixed resolution of 1280x720 currently, will add a config option to the script
 - Not sure if colors will be right for all webcams, I had to convert mine with cv2.COLOR_BGR2RGB
+- Python3 tested only so far
+- Have not implemented mount.webcamfs yet, so no fastab support, instead I launch command when I log into GNOME
+- GNOME/Gtk File Chooser only seems to show mounts that are in your home directory, so choose somethings in there if you want to see it in the shortcut list.
 
 INSTALL:
 
 `sudo pip3 install git+https://github.com/seiferteric/WebCamFS.git`
+
+USAGE:
+Start:
+`webcamfs ~/WebCam`
+Stop:
+`sudo umount ~/WebCam`
+Add To GNOME startup with GUI:
+`gnome-session-properties`
+Make sure to put the full path to the mount root here, I had issues with `~/WebCam`, so put `/home/<username>/WebCam`
+
