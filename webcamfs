@@ -69,15 +69,7 @@ class WebCamFS(Operations):
         if path not in ['/' + file_name, '.', '/']:
             raise FuseOSError(errno.ENOENT)
         if os.path.basename(path) == file_name:
-            # return {
-            #     'st_atime': 0,
-            #     'st_ctime': 0,
-            #     'st_gid': 0,
-            #     'st_uid': 0,
-            #     'st_mode': 33024,
-            #     'st_mtime': 0,
-            #     'st_size': 1024
-            # }
+
             return dict(st_mode=(stat.S_IFREG | 0o444), st_ctime=time.time(),
                                st_mtime=time.time(), st_atime=time.time(), st_nlink=2, st_size=self.file_size) 
         else:
@@ -181,6 +173,15 @@ class WebCamFS(Operations):
         pass
 
 def main(root):
+    if not os.path.exists(root):
+        os.mkdir(root)
+    if not os.path.isdir(root):
+        return -1
+    else:
+        if os.path.exists(os.path.join(root, file_name)):
+            #Already running
+            print("Already running")
+            return 0
     FUSE(WebCamFS(root), root, nothreads=True, foreground=True)
 
 if __name__ == '__main__':

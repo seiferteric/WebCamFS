@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
 
-ver = "0.0.1"
+ver = "0.0.2"
 
 setup(
       name = "WebCamFS",
@@ -11,7 +11,6 @@ setup(
       description = "Linux FUSE Filesystem for live webcam image",
       keywords = "webcam FUSE",
       url = "https://github.com/seiferteric/WebCamFS",
-      zip_safe = True,
       install_requires = ['opencv-python', 'scipy'],
       scripts=['webcamfs']
 )
