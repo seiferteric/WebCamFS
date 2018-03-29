@@ -29,3 +29,5 @@ Add To GNOME startup with GUI:
 `gnome-session-properties`
 Make sure to put the full path to the mount root here, I had issues with `~/WebCam`, so put `/home/<username>/WebCam`
 
+Demo:
+![Demo](https://seiferteric.com/wp-content/uploads/2018/03/gtkfilechooser.png)
